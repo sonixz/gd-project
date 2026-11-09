@@ -4,14 +4,22 @@ GD Project is the home site of the owner's open-source desktop tools made with G
 and what they do together. Decided by the owner on 2026-11-08: the name « GD Project », MIT for every repository, a
 site of its own (not PYF Studio, which is a separate site and project).
 
+## Context lives in the Second Brain
+
+The project's vision, decisions, problems, ideas, third parties and market are kept in the owner's Second Brain, in the
+place « GD Project ». Read it over the second-brain MCP before working: start with « GD Project — main card », which
+links the six detailed notes. When something significant changes (a decision, a solved problem, a new idea, a
+dependency), propose an update there through the archivist (`propose_item`), following the directive « Directive de
+capitalisation des connaissances projet via Second Brain MCP ». Never put source code, secrets, keys or tokens in it.
+
 ## Where things stand (2026-11-08)
 
 - Plain HTML and CSS in `docs/` (no build step), ready for GitHub Pages (Settings → Pages → main, /docs). One page:
   hero (both apps, joined by a « signal » wire), why Godot, one « scene » per app, « Better together » (the session →
   Brain key → search → propose → wrap-up → next session flow), open source.
-- Local git only, nothing uncommitted. The owner created github.com/sonixz/gd-project (empty); no remote is set here
-  yet and nothing was pushed: push only on his word. The repository can also be connected in Agent Manager
-  (⎇ Repos → « I already have it on this computer » → this folder → « Add it as origin »).
+- On GitHub: `origin` is github.com/sonixz/gd-project (private for now), `main` pushed on 2026-11-08 and tracking
+  `origin/main`. Push only on the owner's word. Sessions get the repository's deploy key through `GIT_SSH_COMMAND`
+  (git commands only: check access with `git ls-remote origin`, never `ssh -T`).
 - First owner review pending. A preview was published as a private Artifact (claude.ai/artifact/T2Vk5QZnaGtzkPipw1BaU2).
 
 ## Rules for the content
