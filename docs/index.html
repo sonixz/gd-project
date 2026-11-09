@@ -5,185 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GD Project</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="GD Project: open-source desktop tools built with the Godot engine. Second Brain GD and Agent Manager GD, local-first, and better together.">
+<meta name="description" content="GD Project: an open lab of AI-native apps with rich interfaces, made with the Godot engine. Second Brain GD and Agent Manager GD are its first two apps. Open source, MIT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
-<style>
-/* Layout: an editor-like page. Each product is a "scene"; the two scenes meet in one section, joined by a signal wire. */
-:root {
-  --ground: #121821;   /* slate, biased toward the blue of both apps */
-  --panel: #19212d;
-  --raise: #212b3a;
-  --line: #2b3646;
-  --ink: #e7ecf3;
-  --muted: #95a2b6;
-  --mint: #5fd3b0;     /* Agent Manager */
-  --sky: #a6cdf6;      /* Second Brain */
-  --wire: #f0b264;     /* the connection between them */
-  --on-accent: #0f1620;
-  --display: "Schibsted Grotesk", "Segoe UI", system-ui, sans-serif;
-  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-  --shot-shadow: 0 18px 50px -20px rgba(0, 0, 0, .7);
-  color-scheme: dark;
-}
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --ground: #f2f4f7; --panel: #ffffff; --raise: #e9edf3; --line: #d3dae4; --ink: #162030; --muted: #536176;
-    --mint: #0f7f63; --sky: #2b68a6; --wire: #a85f0c; --on-accent: #ffffff; --shot-shadow: 0 18px 40px -22px rgba(20, 32, 48, .45);
-    color-scheme: light;
-  }
-}
-:root[data-theme="light"] {
-  --ground: #f2f4f7; --panel: #ffffff; --raise: #e9edf3; --line: #d3dae4; --ink: #162030; --muted: #536176;
-  --mint: #0f7f63; --sky: #2b68a6; --wire: #a85f0c; --on-accent: #ffffff; --shot-shadow: 0 18px 40px -22px rgba(20, 32, 48, .45);
-  color-scheme: light;
-}
-
-* { box-sizing: border-box; }
-body {
-  margin: 0; background: var(--ground); color: var(--ink);
-  font-family: var(--body); font-size: 17px; line-height: 1.6;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { color: inherit; }
-:focus-visible { outline: 2px solid var(--wire); outline-offset: 3px; border-radius: 4px; }
-.wrap {
-  max-width: 1180px; margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.08; }
-h2 { font-size: clamp(30px, 4.2vw, 46px); font-weight: 800; letter-spacing: -.02em; }
-h3 { font-size: 21px; font-weight: 700; }
-p { margin: 0; }
-.lede { font-size: 19px; color: var(--muted); max-width: 62ch; }
-.path {
-  font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: .01em;
-  display: inline-flex; align-items: center; gap: 8px;
-}
-.path b { font-weight: 600; color: var(--ink); }
-.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
-
-/* header */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ground); }
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--ground) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.top .wrap { display: flex; align-items: center; gap: 24px; padding-block: 14px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 19px; letter-spacing: -.01em; }
-.brand svg { flex: none; }
-.nav { display: flex; gap: 22px; margin-left: auto; flex-wrap: wrap; }
-.nav a { text-decoration: none; color: var(--muted); font-size: 15px; }
-.nav a:hover { color: var(--ink); }
-@media (max-width: 720px) { .nav a:not(.gh) { display: none; } }
-
-/* hero */
-.hero { padding-block: 72px 40px; }
-.hero h1 { font-size: clamp(44px, 7.4vw, 92px); font-weight: 800; letter-spacing: -.035em; max-width: 13ch; }
-.hero h1 em { font-style: normal; color: var(--wire); }
-.hero .lede { margin-top: 22px; }
-.ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 16px; border: 1px solid var(--line); background: var(--panel); }
-.btn.primary { background: var(--ink); color: var(--ground); border-color: var(--ink); }
-.btn:hover { border-color: var(--muted); }
-
-.stage { position: relative; margin-top: 56px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; align-items: center; }
-.stage figure { margin: 0; min-width: 0; }
-.stage .am { position: relative; z-index: 1; }
-.stage .sb { position: relative; z-index: 2; margin-left: -12%; margin-top: 18%; }
-.shot { border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shot-shadow); overflow: hidden; background: var(--panel); }
-.tag { position: absolute; font-family: var(--mono); font-size: 12.5px; padding: 6px 10px; border-radius: 8px; background: var(--panel); border: 1px solid var(--line); display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; }
-.am .tag { top: -14px; left: 18px; }
-.sb .tag { bottom: -14px; right: 18px; }
-.wire { position: absolute; inset: 0; z-index: 3; pointer-events: none; width: 100%; height: 100%; overflow: visible; }
-.wire path { fill: none; stroke: var(--wire); stroke-width: 2.5; stroke-dasharray: 7 7; animation: flow 1.6s linear infinite; }
-.wire circle { fill: var(--wire); }
-@keyframes flow { to { stroke-dashoffset: -28; } }
-@media (prefers-reduced-motion: reduce) { .wire path { animation: none; } }
-@media (max-width: 760px) {
-  .stage { grid-template-columns: 1fr; }
-  .stage .sb { margin: -10% 0 0 14%; }
-  .wire { display: none; }
-}
-
-/* facts strip */
-.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 72px; }
-.facts div { background: var(--panel); padding: 18px 20px; }
-.facts b { display: block; font-family: var(--display); font-size: 22px; font-weight: 800; }
-.facts span { color: var(--muted); font-size: 14.5px; }
-@media (max-width: 760px) { .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-
-section { padding-block: 96px; }
-.sec-head { display: grid; gap: 14px; max-width: 760px; margin-bottom: 44px; }
-
-/* why godot */
-.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
-.why div { border-top: 2px solid var(--line); padding-top: 18px; display: grid; gap: 8px; align-content: start; }
-.why p { color: var(--muted); }
-.why code { font-family: var(--mono); font-size: 14px; color: var(--ink); }
-@media (max-width: 860px) { .why { grid-template-columns: 1fr; } }
-
-/* product scenes */
-.scene { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 56px; align-items: start; }
-.scene.flip { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
-.scene.flip .copy { order: 2; }
-.copy { display: grid; gap: 18px; align-content: start; }
-.copy .tagline { font-family: var(--display); font-size: 22px; font-weight: 700; }
-.feats { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 12px; }
-.feats li { display: grid; grid-template-columns: 14px 1fr; gap: 12px; }
-.feats li::before { content: ""; width: 8px; height: 8px; border-radius: 2px; margin-top: 9px; background: var(--accent); }
-.feats b { font-weight: 700; }
-.feats span { color: var(--muted); }
-.links { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 6px; }
-.links a { color: var(--accent); font-weight: 700; text-decoration: none; }
-.links a:hover { text-decoration: underline; }
-.gallery { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.gallery .wide { grid-column: 1 / -1; }
-.gallery figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
-.gallery figcaption { font-size: 14px; color: var(--muted); }
-#second-brain { --accent: var(--sky); }
-#agent-manager { --accent: var(--mint); }
-@media (max-width: 900px) { .scene, .scene.flip { grid-template-columns: 1fr; gap: 32px; } .scene.flip .copy { order: 0; } }
-
-/* together */
-#together { background: var(--panel); border-block: 1px solid var(--line); }
-.signal { font-family: var(--mono); font-size: 14px; background: var(--ground); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; overflow-x: auto; margin-bottom: 44px; }
-.signal .row { display: flex; gap: 12px; align-items: center; white-space: nowrap; padding-block: 3px; }
-.signal .from { color: var(--mint); }
-.signal .to { color: var(--sky); }
-.signal .arrow { color: var(--wire); }
-.signal .note { color: var(--muted); }
-.flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; counter-reset: step; }
-.flow li { display: grid; gap: 10px; align-content: start; counter-increment: step; position: relative; padding-top: 34px; }
-.flow li::before { content: counter(step); position: absolute; top: 0; left: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--wire); color: var(--on-accent); font: 700 13px/24px var(--mono); text-align: center; }
-.flow li::after { content: ""; position: absolute; top: 11px; left: 32px; right: -10px; height: 2px; background: color-mix(in srgb, var(--wire) 45%, transparent); }
-.flow li:last-child::after { display: none; }
-.flow h3 { font-size: 18px; }
-.flow p { color: var(--muted); font-size: 15.5px; }
-.who { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
-.who.am { color: var(--mint); } .who.sb { color: var(--sky); }
-@media (max-width: 980px) { .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } .flow li::after { display: none; } }
-@media (max-width: 520px) { .flow { grid-template-columns: 1fr; } }
-.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 52px; }
-.pair figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
-.pair figcaption { font-size: 14px; color: var(--muted); }
-@media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
-
-/* open source */
-.oss { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.repo { border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; background: var(--panel); text-decoration: none; }
-.repo:hover { border-color: var(--muted); }
-.repo .path { font-size: 14px; }
-.repo p { color: var(--muted); font-size: 15.5px; }
-.repo .stack { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
-@media (max-width: 860px) { .oss { grid-template-columns: 1fr; } }
-.principles { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 30px; color: var(--muted); font-size: 15.5px; }
-.principles b { color: var(--ink); }
-
-footer { border-top: 1px solid var(--line); }
-footer .wrap { padding-block: 28px; display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; color: var(--muted); font-size: 14.5px; }
-footer a { color: var(--muted); }
-</style>
+<link rel="stylesheet" href="assets/lab.css">
 </head>
 <body>
 
@@ -198,23 +24,23 @@ footer a { color: var(--muted); }
       GD Project
     </a>
     <nav class="nav" aria-label="Main">
-      <a href="#second-brain">Second Brain</a>
-      <a href="#agent-manager">Agent Manager</a>
-      <a href="#together">Together</a>
-      <a href="#open-source">Open source</a>
-      <a class="gh" href="https://github.com/sonixz">GitHub</a>
+      <a href="#apps">Apps</a>
+      <a href="#explore">What we explore</a>
+      <a href="blog/">Blog</a>
+      <a href="#join">Join the lab</a>
+      <a class="gh" href="https://github.com/sonixz/gd-project">GitHub</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
   <div class="wrap hero">
-    <span class="path"><span class="dot" style="background:var(--wire)"></span> made with Godot · open source · MIT</span>
-    <h1 style="margin-top:18px">Desktop tools built with a <em>game engine</em>.</h1>
-    <p class="lede">GD Project makes local-first apps in Godot: live, themable, and yours. A second brain that keeps what you know, a manager for your AI coding agents, and a wire between them so every agent starts from what you already learned.</p>
+    <span class="path"><span class="dot" style="background:var(--wire)"></span> an open lab · made with Godot · MIT</span>
+    <h1 style="margin-top:18px">AI-native apps with <em>rich interfaces</em>, made with Godot.</h1>
+    <p class="lede">GD Project is a lab. We drop apps in, run their back-ends, plug APIs into Godot, build rich interfaces and integrations, and push the exercise to see what a game engine can do for AI software. Two apps live here today. Everyone is welcome to suggest the next one, or build it.</p>
     <div class="ctas">
-      <a class="btn primary" href="#together">See them work together</a>
-      <a class="btn" href="https://github.com/sonixz">Browse the code</a>
+      <a class="btn primary" href="#apps">Meet the apps</a>
+      <a class="btn" href="blog/">Read the lab's blog</a>
     </div>
 
     <div class="stage" aria-label="Agent Manager GD and Second Brain GD, connected">
@@ -232,84 +58,105 @@ footer a { color: var(--muted); }
     </div>
 
     <div class="facts">
-      <div><b>2 apps</b><span>Second Brain GD, Agent Manager GD</span></div>
-      <div><b>Godot 4.7</b><span>one interface for Windows and Linux</span></div>
-      <div><b>On your disk</b><span>no account, no cloud you did not ask for</span></div>
-      <div><b>MIT</b><span>read it, run it, change it</span></div>
+      <div><b>2 apps</b><span>so far: Second Brain GD, Agent Manager GD</span></div>
+      <div><b>AI at the core</b><span>agents, MCP, voice, not a chat box bolted on</span></div>
+      <div><b>Godot 4.7</b><span>one rich interface for Windows and Linux</span></div>
+      <div><b>MIT</b><span>read it, run it, change it, build on it</span></div>
     </div>
   </div>
 
-  <section>
+  <section id="apps">
     <div class="wrap">
       <div class="sec-head">
-        <span class="path">res://why_godot</span>
-        <h2>Why build desktop tools in a game engine</h2>
-        <p class="lede">A game engine redraws the screen many times a second and treats every pixel as yours. That is what a tool you live in all day needs.</p>
+        <span class="path">res://apps</span>
+        <h2>The lab's apps</h2>
+        <p class="lede">Each app is a real tool, used every day, with its own site, how-to guides and docs. Start with either one.</p>
+      </div>
+      <div class="apps">
+        <article class="app" style="--accent: var(--sky)">
+          <a class="app-shot" href="second-brain/"><img class="shot" src="assets/second-brain/graph-overview.webp" alt="Second Brain GD: the knowledge graph with zones and the Archivist panel" loading="lazy" width="1280" height="800"></a>
+          <div class="app-body">
+            <span class="path"><span class="dot" style="background:var(--sky)"></span><b>second-brain-gd</b> · the memory</span>
+            <h3>Second Brain GD</h3>
+            <p class="tagline">Your second brain. Every AI agent. Your rules.</p>
+            <p class="muted">A second brain that lives on your computer and runs on AI. Speak, drop a file or send a web page: the Archivist agent files it, and every AI agent you use shares what you know, over MCP.</p>
+            <ul class="feats">
+              <li><div><b>Voice first.</b> <span>Everything you can click, you can say.</span></div></li>
+              <li><div><b>A living graph.</b> <span>Notes, documents and pages as one map.</span></div></li>
+              <li><div><b>MCP both ways.</b> <span>Agents read your Brain and propose; you approve.</span></div></li>
+            </ul>
+            <div class="links">
+              <a class="go" href="second-brain/">Visit the site →</a>
+              <a href="second-brain/howto.html">How-to</a>
+              <a href="second-brain/docs.html">Docs</a>
+              <a href="https://github.com/sonixz/second-brain-gd">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="app" style="--accent: var(--mint)">
+          <a class="app-shot" href="agent-manager/"><img class="shot" src="assets/agent-manager/12-board.webp" alt="Agent Manager GD: the board view, sessions sorted by what they are doing" loading="lazy" width="1440" height="900"></a>
+          <div class="app-body">
+            <span class="path"><span class="dot" style="background:var(--mint)"></span><b>agent-manager-gd</b> · the workshop</span>
+            <h3>Agent Manager GD</h3>
+            <p class="tagline">Every coding agent. One control room.</p>
+            <p class="muted">Claude Code, Codex and your shells side by side, in real terminals that never die. See at a glance who is working and who waits for your OK; agents start agents, and your Second Brain is in every session.</p>
+            <ul class="feats">
+              <li><div><b>Terminals that feel native.</b> <span>Ghostty's engine, our renderer.</span></div></li>
+              <li><div><b>Who waits for you.</b> <span>Approve, refuse or reply from the queue, or by voice.</span></div></li>
+              <li><div><b>Review before you merge.</b> <span>A branch per session, line comments sent back.</span></div></li>
+            </ul>
+            <div class="links">
+              <a class="go" href="agent-manager/">Visit the site →</a>
+              <a href="agent-manager/howto.html">How-to</a>
+              <a href="agent-manager/docs.html">Docs</a>
+              <a href="https://github.com/sonixz/agent-manager-gd">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <a class="app next" href="#join">
+          <span class="path"><span class="dot" style="background:var(--wire)"></span><b>res://apps/next</b></span>
+          <h3>The next app</h3>
+          <p class="muted">The lab is open. Suggest an idea, or build your own AI-native app with Godot and show it here.</p>
+          <span class="go">Join the lab →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="explore">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="path">res://explore</span>
+        <h2>What we explore</h2>
+        <p class="lede">A game engine redraws the screen many times a second and treats every pixel as yours. Put AI at the centre, and the interface can finally keep up with what the agents are doing.</p>
       </div>
       <div class="why">
         <div>
-          <h3>Alive in real time</h3>
-          <p>Agents change state, notes arrive, graphs move. The interface shows it as it happens, without a page reload or a spinner.</p>
+          <h3>Rich interfaces</h3>
+          <p>Live states, graphs that move, themes all the way down. Agent Manager draws its terminals itself on Ghostty's engine (<code>libghostty-vt</code>); both apps ship several built-in themes.</p>
         </div>
         <div>
-          <h3>Our own rendering</h3>
-          <p>Agent Manager draws its terminals itself, on Ghostty's terminal engine (<code>libghostty-vt</code>): accents, colour emoji, every text style and full-screen tools render right.</p>
+          <h3>AI at the core</h3>
+          <p>Agents that file, search and propose; voice for everything you can click; MCP so any AI tool can read and write, with you approving.</p>
         </div>
         <div>
-          <h3>Themes all the way down</h3>
-          <p>Fonts, colours and motion are ours to set. Both apps ship several built-in themes, from a calm focus look to a retro terminal.</p>
+          <h3>Back-ends beside the interface</h3>
+          <p>Godot draws, a local Python engine does the work: storage, agents, processes. Everything on your disk, no account, no cloud you did not ask for.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="second-brain">
-    <div class="wrap scene">
-      <div class="copy">
-        <span class="path"><span class="dot" style="background:var(--sky)"></span><b>second-brain-gd</b> · scene 1</span>
-        <h2>Second Brain GD</h2>
-        <p class="tagline">Your second brain. Every AI agent. Your rules.</p>
-        <p class="lede">A second brain that lives on your computer and runs on AI. Speak, drop a file or send a web page: the Archivist agent files it for you, and every AI agent you use shares what you know.</p>
-        <ul class="feats">
-          <li><div><b>Voice first.</b> <span>Everything you can click, you can say.</span></div></li>
-          <li><div><b>A living graph.</b> <span>Your notes, documents and pages as one map you can explore.</span></div></li>
-          <li><div><b>MCP both ways.</b> <span>Claude Code, Codex, GitHub Copilot or Cursor can read your Brain and propose; you approve.</span></div></li>
-          <li><div><b>Local-first.</b> <span>A SQLite file and a folder of originals in your user folder. Your own OpenAI key.</span></div></li>
-        </ul>
-        <div class="links">
-          <a href="https://github.com/sonixz/second-brain-gd">Code on GitHub →</a>
+        <div>
+          <h3>APIs plugged in</h3>
+          <p>Your own OpenAI key for the Brain's agents and voice; Fly.io machines when Agent Manager needs a cloud sandbox, with a budget.</p>
         </div>
-      </div>
-      <div class="gallery">
-        <figure class="wide"><img class="shot" src="assets/second-brain/graph-overview.webp" alt="Second Brain GD: the knowledge graph with zones and the Archivist panel" loading="lazy" width="1280" height="800"><figcaption>The graph: everything you keep, one map.</figcaption></figure>
-        <figure><img class="shot" src="assets/second-brain/live.webp" alt="Second Brain GD: live capture in progress" loading="lazy" width="1280" height="800"><figcaption>Capture by voice, file or web page.</figcaption></figure>
-        <figure><img class="shot" src="assets/second-brain/mcp-timeline.webp" alt="Second Brain GD: timeline of what each AI tool proposed and changed" loading="lazy" width="1280" height="800"><figcaption>Every change an agent made, and Go back.</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="agent-manager">
-    <div class="wrap scene flip">
-      <div class="copy">
-        <span class="path"><span class="dot" style="background:var(--mint)"></span><b>agent-manager-gd</b> · scene 2</span>
-        <h2>Agent Manager GD</h2>
-        <p class="tagline">Your AI coding agents, side by side.</p>
-        <p class="lede">Run Claude Code, Codex and a shell in real terminals inside one window. Sessions keep running when you close it, show what they are doing, and come back on their own conversation.</p>
-        <ul class="feats">
-          <li><div><b>Terminals that feel native.</b> <span>Ghostty's engine, our renderer, on Linux and on Windows.</span></div></li>
-          <li><div><b>Nothing gets lost.</b> <span>Sessions live in tmux, conversations resume and fork, history keeps every summary.</span></div></li>
-          <li><div><b>Who waits for you.</b> <span>States from the agents themselves; approve, refuse or reply from the queue, or by voice.</span></div></li>
-          <li><div><b>Review before you merge.</b> <span>A branch per session, the diff with line comments sent back to the agent.</span></div></li>
-          <li><div><b>Cloud sandboxes when you want them.</b> <span>A throw-away Fly.io machine per session, with a budget. Never destroyed on its own.</span></div></li>
-        </ul>
-        <div class="links">
-          <a href="https://github.com/sonixz/agent-manager-gd">Code on GitHub →</a>
+        <div>
+          <h3>Integrations</h3>
+          <p>Apps that talk to each other and to the tools you already use: Claude Code, Codex, GitHub Copilot, Cursor, git and SSH.</p>
         </div>
-      </div>
-      <div class="gallery">
-        <figure class="wide"><img class="shot" src="assets/agent-manager/12-board.webp" alt="Agent Manager GD: the board view, sessions sorted by what they are doing" loading="lazy" width="1440" height="900"><figcaption>The board: what each agent is doing, at a glance.</figcaption></figure>
-        <figure><img class="shot" src="assets/agent-manager/26-review.webp" alt="Agent Manager GD: a diff under review with a line comment" loading="lazy" width="1440" height="900"><figcaption>Review a session's branch, comment a line.</figcaption></figure>
-        <figure><img class="shot" src="assets/agent-manager/41-sandboxes-manager.webp" alt="Agent Manager GD: cloud sandboxes with their connection, running time and estimated cost" loading="lazy" width="1440" height="900"><figcaption>Sandboxes: connection, time, cost.</figcaption></figure>
+        <div>
+          <h3>A recipe to reuse</h3>
+          <p>Godot interface, local Python engine, AI agents, the Second Brain as shared memory. The next GD app starts from what the last one learned.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -317,9 +164,9 @@ footer a { color: var(--muted); }
   <section id="together">
     <div class="wrap">
       <div class="sec-head">
-        <span class="path"><span class="dot" style="background:var(--wire)"></span>signal connected</span>
-        <h2>Better together: the context is never lost</h2>
-        <p class="lede">On its own, each agent session starts from nothing and forgets everything when it ends. Connected to your Second Brain, every session starts from what you know and leaves something behind.</p>
+        <span class="path"><span class="dot" style="background:var(--wire)"></span>case study · signal connected</span>
+        <h2>Two apps, one memory</h2>
+        <p class="lede">The lab's first integration. On its own, each agent session starts from nothing and forgets everything when it ends. Connected to your Second Brain, every session starts from what you know and leaves something behind.</p>
       </div>
 
       <div class="signal" role="img" aria-label="When a session is created in Agent Manager, it gets its own Second Brain key; what the agent learns is proposed to the Brain; its summary briefs the next session.">
@@ -344,28 +191,63 @@ footer a { color: var(--muted); }
     </div>
   </section>
 
-  <section id="open-source">
+  <section id="blog">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="path">res://blog</span>
+        <h2>From the lab</h2>
+        <p class="lede">What we tried, what worked, what broke. The apps keep their devlogs; the blog tells the story across them.</p>
+      </div>
+      <div class="posts">
+        <a class="post" href="blog/2026-11-09-the-lab-opens.html">
+          <time datetime="2026-11-09">9 November 2026</time>
+          <h3>The lab opens</h3>
+          <p class="muted">Why a game engine for AI-native software, what lives here today, and how to join.</p>
+        </a>
+      </div>
+      <p style="margin-top:22px"><a class="more" href="blog/">All posts →</a></p>
+    </div>
+  </section>
+
+  <section id="join">
     <div class="wrap">
       <div class="sec-head">
         <span class="path">LICENSE · MIT</span>
-        <h2>Open source, built in the open</h2>
-        <p class="lede">Every app is a public repository under the MIT licence, with its devlog: each step, what was tested, what broke and how it was fixed.</p>
+        <h2>Join the lab</h2>
+        <p class="lede">Everything here is open source under the MIT licence, built in the open with a devlog per app: each step, what was tested, what broke and how it was fixed.</p>
+      </div>
+      <div class="join">
+        <div>
+          <h3>Suggest an idea</h3>
+          <p>An app you would like to see, an API worth plugging in, an integration to try. Open an issue.</p>
+          <a class="more" href="https://github.com/sonixz/gd-project/issues">Open an issue →</a>
+        </div>
+        <div>
+          <h3>Improve an app</h3>
+          <p>Each app's repository has its devlog and its docs. Read where it stands, then send a fix or a feature.</p>
+          <a class="more" href="https://github.com/sonixz">Browse the repositories →</a>
+        </div>
+        <div>
+          <h3>Build your own</h3>
+          <p>Make an AI-native app with a rich Godot interface, on the same recipe or your own. Tell us, and it can join the lab.</p>
+          <a class="more" href="blog/2026-11-09-the-lab-opens.html">How the lab works →</a>
+        </div>
       </div>
       <div class="oss">
         <a class="repo" href="https://github.com/sonixz/second-brain-gd">
           <span class="path"><span class="dot" style="background:var(--sky)"></span><b>sonixz/second-brain-gd</b></span>
-          <p>The second brain: capture, graph, Archivist agent, MCP in and out.</p>
+          <p>The memory: capture, graph, Archivist agent, MCP in and out.</p>
           <span class="stack">Godot 4.7 · Python · SQLite</span>
         </a>
         <a class="repo" href="https://github.com/sonixz/agent-manager-gd">
           <span class="path"><span class="dot" style="background:var(--mint)"></span><b>sonixz/agent-manager-gd</b></span>
-          <p>The agent manager: terminals, sessions, review, voice, sandboxes.</p>
+          <p>The workshop: terminals, sessions, review, voice, sandboxes.</p>
           <span class="stack">Godot 4.7 · C++ (libghostty-vt) · Python · tmux</span>
         </a>
         <a class="repo" href="https://github.com/sonixz/gd-project">
           <span class="path"><span class="dot" style="background:var(--wire)"></span><b>sonixz/gd-project</b></span>
-          <p>This site. Plain HTML and CSS, no build step.</p>
-          <span class="stack">HTML · CSS</span>
+          <p>The lab's home: this site, the blog, and how the apps' sites come together.</p>
+          <span class="stack">HTML · CSS · GitHub Pages</span>
         </a>
       </div>
       <div class="principles">
@@ -380,7 +262,7 @@ footer a { color: var(--muted); }
 
 <footer>
   <div class="wrap">
-    <span>GD Project · desktop tools made with Godot · MIT</span>
+    <span>GD Project · an open lab of AI-native apps made with Godot · MIT</span>
     <span>Godot is a trademark of the Godot Foundation; GD Project is an independent project.</span>
   </div>
 </footer>

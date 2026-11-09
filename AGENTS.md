@@ -1,8 +1,10 @@
 # Working on GD Project (for people and coding agents)
 
-GD Project is the home site of the owner's open-source desktop tools made with Godot: Second Brain GD, Agent Manager GD,
-and what they do together. Decided by the owner on 2026-11-08: the name « GD Project », MIT for every repository, a
-site of its own (not PYF Studio, which is a separate site and project).
+GD Project is an open lab of AI-native apps with rich interfaces, made with Godot (owner, 2026-11-09): apps are dropped
+in, back-ends run, APIs get plugged into Godot, interfaces and integrations are pushed as far as they go, and anyone may
+suggest or build an app. Second Brain GD and Agent Manager GD are its first two apps. This repository is the lab's
+public showcase: its index, its blog, and the assembly of every app's site. Decided by the owner on 2026-11-08: the name
+« GD Project », MIT for every repository, a site of its own (not PYF Studio, which is a separate site and project).
 
 ## Context lives in the Second Brain
 
@@ -12,15 +14,17 @@ links the six detailed notes. When something significant changes (a decision, a 
 dependency), propose an update there through the archivist (`propose_item`), following the directive « Directive de
 capitalisation des connaissances projet via Second Brain MCP ». Never put source code, secrets, keys or tokens in it.
 
-## Where things stand (2026-11-08)
+## Where things stand (2026-11-09)
 
-- Plain HTML and CSS in `docs/` (no build step), ready for GitHub Pages (Settings → Pages → main, /docs). One page:
-  hero (both apps, joined by a « signal » wire), why Godot, one « scene » per app, « Better together » (the session →
-  Brain key → search → propose → wrap-up → next session flow), open source.
-- On GitHub: `origin` is github.com/sonixz/gd-project (private for now), `main` pushed on 2026-11-08 and tracking
-  `origin/main`. Push only on the owner's word. Sessions get the repository's deploy key through `GIT_SSH_COMMAND`
-  (git commands only: check access with `git ls-remote origin`, never `ssh -T`).
-- First owner review pending. A preview was published as a private Artifact (claude.ai/artifact/T2Vk5QZnaGtzkPipw1BaU2).
+- One site assembled from three repositories (see README): the lab's index and blog in `docs/`, each app's own
+  `public/` under `/second-brain/` and `/agent-manager/`, with the GD Project bar added by `tools/assemble.py`.
+  Preview: `python3 tools/assemble.py && python3 -m http.server -d _site 8800`.
+- Hosting: GitHub Pages through `.github/workflows/pages.yml` (manual run for now). Azure Static Web Apps was the
+  alternative; Pages chosen first by the owner (free). Not live yet: the repositories are private (Pages on a private
+  repository needs a paid plan, and the workflow needs the `APPS_READ_TOKEN` secret to read the apps).
+- On GitHub: `origin` is github.com/sonixz/gd-project (private for now). Push only on the owner's word. Sessions get
+  the repository's deploy key through `GIT_SSH_COMMAND` (git commands only: check access with `git ls-remote origin`,
+  never `ssh -T`).
 
 ## Rules for the content
 
@@ -29,7 +33,9 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
 - Screenshots are the apps' own captures converted to WebP: Agent Manager's from `agent-manager-gd/docs/screens/`
   (converted with the Second Brain's `tools/web_images.gd`: `godot --headless --path ../second-brain-gd --script
   res://tools/web_images.gd -- in.png=out.webp@1440`), Second Brain's from `second-brain-gd/public/assets/showcase/`.
-- The Second Brain keeps its own product site (product page, docs, how-to guides in `second-brain-gd/public`); GD
-  Project links to it rather than replacing it.
+- Each app owns its site (`public/` in its repository: product page, how-to guides, docs). GD Project never edits a
+  copy: it assembles them. Changes to an app's site go to that app's session. An app may adopt the lab bar itself
+  (`data-gd-lab-bar` on its root element), then the assembly leaves its pages alone.
+- The blog tells the story across the apps; facts in a post follow the same rule as the site (true today).
 - Godot is a trademark of the Godot Foundation: no Godot logo, the footer says GD Project is independent.
 - Light and dark themes are both designed (tokens in `:root`); the page must work at phone width.

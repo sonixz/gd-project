@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Lab Opens</title>
+<meta name="description" content="GD Project opens: an open lab of AI-native apps with rich interfaces, made with Godot. Why a game engine, what lives here today, and how to join.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/lab.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="GD Project home">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="3" fill="var(--mint)"/><rect x="15" y="15" width="10" height="10" rx="3" fill="var(--sky)"/><path d="M11 6 H18 Q20 6 20 8 V15" fill="none" stroke="var(--wire)" stroke-width="2.4" stroke-linecap="round"/></svg>
+      GD Project
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="../#apps">Apps</a>
+      <a href="../#explore">What we explore</a>
+      <a href="./">Blog</a>
+      <a href="../#join">Join the lab</a>
+      <a class="gh" href="https://github.com/sonixz/gd-project">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <article class="article">
+    <a class="crumb" href="./">← All posts</a>
+    <h1>The lab opens</h1>
+    <p class="meta"><time datetime="2026-11-09">9 November 2026</time> · GD Project</p>
+    <div class="body">
+      <p class="lede">GD Project is a lab for one question: what happens when you build AI-native software with a game engine?</p>
+
+      <h2>Why a game engine</h2>
+      <p>AI software is alive. Agents change state while you watch, notes arrive on their own, a graph of what you know keeps moving. A web page or a classic desktop toolkit can show that, but a game engine is built for it: it redraws the screen many times a second and treats every pixel as yours. Godot gives us that, for Windows and Linux, from one interface, under a free licence.</p>
+      <p>So the lab's apps put the AI at the centre (agents that file, search and propose, voice for everything you can click, MCP so other AI tools can join in) and give it an interface rich enough to keep up.</p>
+
+      <h2>What lives here today</h2>
+      <ul>
+        <li><a href="../second-brain/">Second Brain GD</a>, the memory: a second brain on your computer, where the Archivist agent files what you speak, drop or send, and every AI agent you use shares what you know.</li>
+        <li><a href="../agent-manager/">Agent Manager GD</a>, the workshop: every coding agent in one control room: Claude Code, Codex and shells in real terminals that never die, and the Brain wired into every one.</li>
+      </ul>
+      <p>Together they are the lab's first integration: each coding session gets its own key to the Brain, searches what you already know, proposes what it learned for your approval, and leaves a summary that briefs the next session. The context is no longer lost between agents.</p>
+      <figure>
+        <img class="shot" src="../assets/agent-manager/19-brain-session.webp" alt="Agent Manager GD: a Claude Code session marked as sharing the Second Brain" loading="lazy" width="1440" height="900">
+        <figcaption>A coding session that shares the Second Brain (✦ in its header).</figcaption>
+      </figure>
+
+      <h2>How the lab works</h2>
+      <p>Each app is a real tool, used every day, in its own repository with its devlog, its site, its how-to guides and its docs. This site brings them together. The recipe they share is simple: a Godot interface, a local Python engine beside it, AI agents, and the Second Brain as shared memory. Each new app starts from what the last one learned.</p>
+      <p>Everything is open source under the MIT licence.</p>
+
+      <h2>Join</h2>
+      <p>Suggest an app, an API worth plugging in, or an integration to try: <a href="https://github.com/sonixz/gd-project/issues">open an issue</a>. Improve one of the apps. Or build your own AI-native app with Godot and tell us about it: the lab is meant to grow.</p>
+    </div>
+  </article>
+</main>
+<footer>
+  <div class="wrap">
+    <span>GD Project · an open lab of AI-native apps made with Godot · MIT</span>
+    <span>Godot is a trademark of the Godot Foundation; GD Project is an independent project.</span>
+  </div>
+</footer>
+</body>
+</html>

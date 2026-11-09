@@ -1,0 +1,20 @@
+<div class="gdlab" data-gd-lab-bar>
+<style>
+.gdlab{background:#0d131b;color:#c9d3e0;border-bottom:1px solid #263242;font:500 13px/1.2 system-ui,"Segoe UI",sans-serif;position:relative;z-index:60}
+.gdlab__in{max-width:1180px;margin:0 auto;padding:7px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:18px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.gdlab__in::-webkit-scrollbar{display:none}
+.gdlab a{color:#c9d3e0;text-decoration:none}
+.gdlab a:hover{color:#fff}
+.gdlab a[aria-current]{color:#fff;font-weight:700}
+.gdlab__home{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#fff!important}
+.gdlab__tag{color:#7f8ca0;font-weight:400}
+.gdlab__apps{display:flex;gap:16px;margin-left:auto}
+.gdlab__sep{width:1px;height:14px;background:#263242}
+@media (max-width:560px){.gdlab__tag,.gdlab__sep,.gdlab__apps a:not([aria-current]){display:none}}
+</style>
+<div class="gdlab__in">
+<a class="gdlab__home" href="{{ROOT}}"><svg width="16" height="16" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="3" fill="#5fd3b0"/><rect x="15" y="15" width="10" height="10" rx="3" fill="#a6cdf6"/><path d="M11 6 H18 Q20 6 20 8 V15" fill="none" stroke="#f0b264" stroke-width="2.6" stroke-linecap="round"/></svg>GD Project</a>
+<span class="gdlab__tag">an open lab of AI-native apps made with Godot</span>
+<nav class="gdlab__apps" aria-label="GD Project">{{APPS}}<span class="gdlab__sep" aria-hidden="true"></span><a href="{{ROOT}}blog/">Blog</a></nav>
+</div>
+</div>

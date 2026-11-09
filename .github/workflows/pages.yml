@@ -1,0 +1,57 @@
+# Publishes the GD Project site on GitHub Pages: the lab's pages (docs/) plus each app's site (public/ in its own
+# repository) under its own path, assembled by tools/assemble.py.
+#
+# Before the first run (owner's steps):
+#   1. Settings → Pages → Source: GitHub Actions.
+#   2. While the app repositories are private: a fine-grained token with read-only "Contents" on second-brain-gd and
+#      agent-manager-gd, saved as the secret APPS_READ_TOKEN. Not needed once they are public.
+#   3. Then add `push: branches: [main]` under `on:` so every push publishes.
+name: Publish the site
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [app-site-updated]   # an app's repository can ask for a new publication after changing its site
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: gd-project
+      - uses: actions/checkout@v4
+        with:
+          repository: sonixz/second-brain-gd
+          path: second-brain-gd
+          sparse-checkout: public
+          token: ${{ secrets.APPS_READ_TOKEN || github.token }}
+      - uses: actions/checkout@v4
+        with:
+          repository: sonixz/agent-manager-gd
+          path: agent-manager-gd
+          sparse-checkout: public
+          token: ${{ secrets.APPS_READ_TOKEN || github.token }}
+      - run: python3 gd-project/tools/assemble.py --out _site --apps-root .
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
