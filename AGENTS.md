@@ -18,10 +18,11 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
 
 - One site assembled from three repositories (see README): the lab's index and blog in `docs/`, each app's own
   `public/` under `/second-brain/` and `/agent-manager/`, with the GD Project bar added by `tools/assemble.py`.
-  Preview: `python3 tools/assemble.py && python3 -m http.server -d _site 8800`.
-- Hosting: GitHub Pages through `.github/workflows/pages.yml` (manual run for now). Azure Static Web Apps was the
-  alternative; Pages chosen first by the owner (free). Not live yet: the repositories are private (Pages on a private
-  repository needs a paid plan, and the workflow needs the `APPS_READ_TOKEN` secret to read the apps).
+  Local work: `python3 tools/site.py serve` (build, link check, http://localhost:8800, rebuild on change);
+  `python3 tools/site.py check` before every commit that touches the site.
+- Not online yet (owner, 2026-11-09): the repositories stay private; the site is built and checked locally, and going
+  online comes next. `.github/workflows/pages.yml` (GitHub Pages) is parked, manual runs only: Pages on a private
+  repository needs a paid plan, and the workflow would need an `APPS_READ_TOKEN` secret to read the apps.
 - On GitHub: `origin` is github.com/sonixz/gd-project (private for now). Push only on the owner's word. Sessions get
   the repository's deploy key through `GIT_SSH_COMMAND` (git commands only: check access with `git ls-remote origin`,
   never `ssh -T`).

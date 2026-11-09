@@ -1,1 +1,4 @@
 _site/
+_site.new/
+_site.old/
+__pycache__/

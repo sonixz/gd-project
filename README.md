@@ -23,13 +23,14 @@ Each app keeps its site in its own repository. `tools/assemble.py` (Python stand
 into `_site/` and adds the thin GD Project bar (`tools/lab-bar.html`) at the top of every app page, unless the page
 already has one.
 
-Preview locally, with the three repositories side by side:
+Work on it locally, with the three repositories side by side (`../second-brain-gd`, `../agent-manager-gd`):
 
-    python3 tools/assemble.py
-    python3 -m http.server -d _site 8800      # then open http://localhost:8800
+    python3 tools/site.py serve     # build, check the links, serve on http://localhost:8800, rebuild on every change
+    python3 tools/site.py check     # build and check every internal link and image (non-zero exit if one is broken)
+    python3 tools/site.py build     # just build _site/
 
-Publication: `.github/workflows/pages.yml` runs the same assembly on GitHub Actions and deploys to GitHub Pages. The
-steps to turn it on are at the top of that file.
+Publication: the repositories stay private for now (owner, 2026-11-09), so the site is built and checked locally.
+`.github/workflows/pages.yml` (GitHub Pages, parked: manual runs only) is kept for when the site goes online.
 
 A new blog post is one HTML file in `docs/blog/` (copy the last one), plus a card in `docs/blog/index.html` and in the
 « From the lab » section of `docs/index.html`.

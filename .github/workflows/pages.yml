@@ -1,3 +1,6 @@
+# PARKED (owner, 2026-11-09): the repositories stay private, the site is built and checked locally with
+# tools/site.py for now. This workflow only runs when started by hand; it is kept for when the site goes online.
+#
 # Publishes the GD Project site on GitHub Pages: the lab's pages (docs/) plus each app's site (public/ in its own
 # repository) under its own path, assembled by tools/assemble.py.
 #
