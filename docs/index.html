@@ -4,8 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GD Project</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="GD Project: an open lab of AI-native apps with rich interfaces, made with the Godot engine. Second Brain GD and Agent Manager GD are its first two apps. Open source, MIT.">
+<meta name="description" content="GD Project: a small lab of AI-native apps made with Godot. Second Brain GD and Agent Manager GD. Open source, MIT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -15,7 +14,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="GD Project home">
+    <a class="brand" href="./" aria-label="GD Project home">
       <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
         <rect x="1" y="1" width="10" height="10" rx="3" fill="var(--mint)"/>
         <rect x="15" y="15" width="10" height="10" rx="3" fill="var(--sky)"/>
@@ -24,245 +23,67 @@
       GD Project
     </a>
     <nav class="nav" aria-label="Main">
-      <a href="#apps">Apps</a>
-      <a href="#explore">What we explore</a>
+      <a href="second-brain/">Second Brain</a>
+      <a href="agent-manager/">Agent Manager</a>
       <a href="blog/">Blog</a>
-      <a href="#join">Join the lab</a>
-      <a class="gh" href="https://github.com/sonixz/gd-project">GitHub</a>
+      <a class="gh" href="https://github.com/sonixz">GitHub</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
-  <div class="wrap hero">
-    <span class="path"><span class="dot" style="background:var(--wire)"></span> an open lab · made with Godot · MIT</span>
-    <h1 style="margin-top:18px">AI-native apps with <em>rich interfaces</em>, made with Godot.</h1>
-    <p class="lede">GD Project is a lab. We drop apps in, run their back-ends, plug APIs into Godot, build rich interfaces and integrations, and push the exercise to see what a game engine can do for AI software. Two apps live here today. Everyone is welcome to suggest the next one, or build it.</p>
-    <div class="ctas">
-      <a class="btn primary" href="#apps">Meet the apps</a>
-      <a class="btn" href="blog/">Read the lab's blog</a>
-    </div>
+<main>
+  <div class="wrap">
+    <section class="intro">
+      <span class="path"><span class="dot" style="background:var(--wire)"></span>made with Godot · open source</span>
+      <h1>A small lab of <em>AI-native</em> apps, made with Godot.</h1>
+      <p class="lede">Desktop software with the AI at the centre and an interface drawn by a game engine. Two apps so far, both used every day.</p>
+    </section>
 
-    <div class="stage" aria-label="Agent Manager GD and Second Brain GD, connected">
-      <figure class="am">
-        <img class="shot" src="assets/agent-manager/11-grid.webp" alt="Agent Manager GD: four Claude Code sessions in a grid, two waiting for an approval, grouped by project in the sidebar" width="1440" height="900">
-        <span class="tag"><span class="dot" style="background:var(--mint)"></span>agent-manager-gd</span>
-      </figure>
-      <figure class="sb">
-        <img class="shot" src="assets/second-brain/mcp-proposals.webp" alt="Second Brain GD: two notes proposed by an agent wait for approval, with the AI tools allowed to read the Brain" width="1280" height="800">
-        <span class="tag"><span class="dot" style="background:var(--sky)"></span>second-brain-gd</span>
-      </figure>
-      <svg class="wire" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M 46 30 C 62 30, 58 58, 70 58" vector-effect="non-scaling-stroke"/>
-      </svg>
-    </div>
+    <section class="apps" aria-label="Apps">
+      <a class="app" href="second-brain/" style="--accent: var(--sky)">
+        <span class="app-shot"><img class="shot" src="assets/second-brain/graph-overview.webp" alt="Second Brain GD: the knowledge graph with zones and the Archivist panel" width="1280" height="800"></span>
+        <span class="app-body">
+          <span class="path"><span class="dot" style="background:var(--sky)"></span>second-brain-gd</span>
+          <h2>Second Brain GD</h2>
+          <span class="muted">A second brain on your computer. Speak, drop or send: the Archivist agent files it, and your AI agents share it over MCP.</span>
+          <span class="go">Visit →</span>
+        </span>
+      </a>
+      <a class="app" href="agent-manager/" style="--accent: var(--mint)">
+        <span class="app-shot"><img class="shot" src="assets/agent-manager/11-grid.webp" alt="Agent Manager GD: four Claude Code sessions in a grid, grouped by project in the sidebar" width="1440" height="900"></span>
+        <span class="app-body">
+          <span class="path"><span class="dot" style="background:var(--mint)"></span>agent-manager-gd</span>
+          <h2>Agent Manager GD</h2>
+          <span class="muted">Every coding agent in one control room: Claude Code, Codex and shells in real terminals, with the Brain in every session.</span>
+          <span class="go">Visit →</span>
+        </span>
+      </a>
+    </section>
 
-    <div class="facts">
-      <div><b>2 apps</b><span>so far: Second Brain GD, Agent Manager GD</span></div>
-      <div><b>AI at the core</b><span>agents, MCP, voice, not a chat box bolted on</span></div>
-      <div><b>Godot 4.7</b><span>one rich interface for Windows and Linux</span></div>
-      <div><b>MIT</b><span>read it, run it, change it, build on it</span></div>
-    </div>
+    <section class="stack" aria-labelledby="stack-title">
+      <h2 id="stack-title" class="label">Built with</h2>
+      <ul class="chips">
+        <li>Godot 4.7</li><li>GDScript</li><li>Python</li><li>SQLite</li><li>C++ · libghostty-vt</li><li>MCP</li><li>Claude Code · Codex</li>
+      </ul>
+      <p class="muted">The same recipe in every app: a Godot interface, a local Python engine beside it, AI agents, and the Second Brain as shared memory.</p>
+    </section>
+
+    <section class="closing">
+      <div>
+        <h2 class="label">Open source</h2>
+        <p>MIT licence, each app with its devlog. <a href="https://github.com/sonixz">github.com/sonixz</a></p>
+      </div>
+      <div>
+        <h2 class="label">Latest from the blog</h2>
+        <p><a href="blog/2026-11-09-the-lab-opens.html">The lab opens</a> <span class="muted">· 9 November 2026</span></p>
+      </div>
+    </section>
   </div>
-
-  <section id="apps">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="path">res://apps</span>
-        <h2>The lab's apps</h2>
-        <p class="lede">Each app is a real tool, used every day, with its own site, how-to guides and docs. Start with either one.</p>
-      </div>
-      <div class="apps">
-        <article class="app" style="--accent: var(--sky)">
-          <a class="app-shot" href="second-brain/"><img class="shot" src="assets/second-brain/graph-overview.webp" alt="Second Brain GD: the knowledge graph with zones and the Archivist panel" loading="lazy" width="1280" height="800"></a>
-          <div class="app-body">
-            <span class="path"><span class="dot" style="background:var(--sky)"></span><b>second-brain-gd</b> · the memory</span>
-            <h3>Second Brain GD</h3>
-            <p class="tagline">Your second brain. Every AI agent. Your rules.</p>
-            <p class="muted">A second brain that lives on your computer and runs on AI. Speak, drop a file or send a web page: the Archivist agent files it, and every AI agent you use shares what you know, over MCP.</p>
-            <ul class="feats">
-              <li><div><b>Voice first.</b> <span>Everything you can click, you can say.</span></div></li>
-              <li><div><b>A living graph.</b> <span>Notes, documents and pages as one map.</span></div></li>
-              <li><div><b>MCP both ways.</b> <span>Agents read your Brain and propose; you approve.</span></div></li>
-            </ul>
-            <div class="links">
-              <a class="go" href="second-brain/">Visit the site →</a>
-              <a href="second-brain/howto.html">How-to</a>
-              <a href="second-brain/docs.html">Docs</a>
-              <a href="https://github.com/sonixz/second-brain-gd">Code</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="app" style="--accent: var(--mint)">
-          <a class="app-shot" href="agent-manager/"><img class="shot" src="assets/agent-manager/12-board.webp" alt="Agent Manager GD: the board view, sessions sorted by what they are doing" loading="lazy" width="1440" height="900"></a>
-          <div class="app-body">
-            <span class="path"><span class="dot" style="background:var(--mint)"></span><b>agent-manager-gd</b> · the workshop</span>
-            <h3>Agent Manager GD</h3>
-            <p class="tagline">Every coding agent. One control room.</p>
-            <p class="muted">Claude Code, Codex and your shells side by side, in real terminals that never die. See at a glance who is working and who waits for your OK; agents start agents, and your Second Brain is in every session.</p>
-            <ul class="feats">
-              <li><div><b>Terminals that feel native.</b> <span>Ghostty's engine, our renderer.</span></div></li>
-              <li><div><b>Who waits for you.</b> <span>Approve, refuse or reply from the queue, or by voice.</span></div></li>
-              <li><div><b>Review before you merge.</b> <span>A branch per session, line comments sent back.</span></div></li>
-            </ul>
-            <div class="links">
-              <a class="go" href="agent-manager/">Visit the site →</a>
-              <a href="agent-manager/howto.html">How-to</a>
-              <a href="agent-manager/docs.html">Docs</a>
-              <a href="https://github.com/sonixz/agent-manager-gd">Code</a>
-            </div>
-          </div>
-        </article>
-
-        <a class="app next" href="#join">
-          <span class="path"><span class="dot" style="background:var(--wire)"></span><b>res://apps/next</b></span>
-          <h3>The next app</h3>
-          <p class="muted">The lab is open. Suggest an idea, or build your own AI-native app with Godot and show it here.</p>
-          <span class="go">Join the lab →</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="explore">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="path">res://explore</span>
-        <h2>What we explore</h2>
-        <p class="lede">A game engine redraws the screen many times a second and treats every pixel as yours. Put AI at the centre, and the interface can finally keep up with what the agents are doing.</p>
-      </div>
-      <div class="why">
-        <div>
-          <h3>Rich interfaces</h3>
-          <p>Live states, graphs that move, themes all the way down. Agent Manager draws its terminals itself on Ghostty's engine (<code>libghostty-vt</code>); both apps ship several built-in themes.</p>
-        </div>
-        <div>
-          <h3>AI at the core</h3>
-          <p>Agents that file, search and propose; voice for everything you can click; MCP so any AI tool can read and write, with you approving.</p>
-        </div>
-        <div>
-          <h3>Back-ends beside the interface</h3>
-          <p>Godot draws, a local Python engine does the work: storage, agents, processes. Everything on your disk, no account, no cloud you did not ask for.</p>
-        </div>
-        <div>
-          <h3>APIs plugged in</h3>
-          <p>Your own OpenAI key for the Brain's agents and voice; Fly.io machines when Agent Manager needs a cloud sandbox, with a budget.</p>
-        </div>
-        <div>
-          <h3>Integrations</h3>
-          <p>Apps that talk to each other and to the tools you already use: Claude Code, Codex, GitHub Copilot, Cursor, git and SSH.</p>
-        </div>
-        <div>
-          <h3>A recipe to reuse</h3>
-          <p>Godot interface, local Python engine, AI agents, the Second Brain as shared memory. The next GD app starts from what the last one learned.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="together">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="path"><span class="dot" style="background:var(--wire)"></span>case study · signal connected</span>
-        <h2>Two apps, one memory</h2>
-        <p class="lede">The lab's first integration. On its own, each agent session starts from nothing and forgets everything when it ends. Connected to your Second Brain, every session starts from what you know and leaves something behind.</p>
-      </div>
-
-      <div class="signal" role="img" aria-label="When a session is created in Agent Manager, it gets its own Second Brain key; what the agent learns is proposed to the Brain; its summary briefs the next session.">
-        <div class="row"><span class="from">AgentManager.session_created</span><span class="arrow">──▶</span><span class="to">SecondBrain.new_key(level = "propose items")</span><span class="note"># one key per session</span></div>
-        <div class="row"><span class="from">agent.works</span><span class="arrow">──▶</span><span class="to">SecondBrain.search() · fetch()</span><span class="note"># over MCP, on this computer</span></div>
-        <div class="row"><span class="from">agent.learned</span><span class="arrow">──▶</span><span class="to">SecondBrain.propose_item()</span><span class="note"># waits for your OK</span></div>
-        <div class="row"><span class="from">session.wrapped_up</span><span class="arrow">──▶</span><span class="to">summary → History · next session's brief</span><span class="note"># the context survives</span></div>
-      </div>
-
-      <ol class="flow">
-        <li><span class="who am">Agent Manager</span><h3>Start a session</h3><p>Claude Code or Codex, in a folder or a connected repository. It gets its own Brain key, nothing shared.</p></li>
-        <li><span class="who sb">Second Brain</span><h3>It searches what you know</h3><p>Decisions, notes and documents from your Brain, while it works, through MCP.</p></li>
-        <li><span class="who sb">Second Brain</span><h3>It proposes, you decide</h3><p>What the agent learned arrives as a proposal, named after its session. Approve or reject it.</p></li>
-        <li><span class="who am">Agent Manager</span><h3>Wrap up</h3><p>The agent writes what it did, what is left and how to continue. Kept in History and searchable.</p></li>
-        <li><span class="who am">Both</span><h3>The next one starts warm</h3><p>A new session in the same folder is briefed with that summary and points to the Brain.</p></li>
-      </ol>
-
-      <div class="pair">
-        <figure><img class="shot" src="assets/agent-manager/19-brain-session.webp" alt="Agent Manager GD: a Claude Code session marked as sharing the Second Brain" loading="lazy" width="1440" height="900"><figcaption>A session that shares the Second Brain (✦ in its header).</figcaption></figure>
-        <figure><img class="shot" src="assets/agent-manager/25-new-session-brief.webp" alt="Agent Manager GD: a new session offered the summary of the previous one as its brief" loading="lazy" width="1440" height="900"><figcaption>The next session, briefed from the last summary.</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="blog">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="path">res://blog</span>
-        <h2>From the lab</h2>
-        <p class="lede">What we tried, what worked, what broke. The apps keep their devlogs; the blog tells the story across them.</p>
-      </div>
-      <div class="posts">
-        <a class="post" href="blog/2026-11-09-the-lab-opens.html">
-          <time datetime="2026-11-09">9 November 2026</time>
-          <h3>The lab opens</h3>
-          <p class="muted">Why a game engine for AI-native software, what lives here today, and how to join.</p>
-        </a>
-      </div>
-      <p style="margin-top:22px"><a class="more" href="blog/">All posts →</a></p>
-    </div>
-  </section>
-
-  <section id="join">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="path">LICENSE · MIT</span>
-        <h2>Join the lab</h2>
-        <p class="lede">Everything here is open source under the MIT licence, built in the open with a devlog per app: each step, what was tested, what broke and how it was fixed.</p>
-      </div>
-      <div class="join">
-        <div>
-          <h3>Suggest an idea</h3>
-          <p>An app you would like to see, an API worth plugging in, an integration to try. Open an issue.</p>
-          <a class="more" href="https://github.com/sonixz/gd-project/issues">Open an issue →</a>
-        </div>
-        <div>
-          <h3>Improve an app</h3>
-          <p>Each app's repository has its devlog and its docs. Read where it stands, then send a fix or a feature.</p>
-          <a class="more" href="https://github.com/sonixz">Browse the repositories →</a>
-        </div>
-        <div>
-          <h3>Build your own</h3>
-          <p>Make an AI-native app with a rich Godot interface, on the same recipe or your own. Tell us, and it can join the lab.</p>
-          <a class="more" href="blog/2026-11-09-the-lab-opens.html">How the lab works →</a>
-        </div>
-      </div>
-      <div class="oss">
-        <a class="repo" href="https://github.com/sonixz/second-brain-gd">
-          <span class="path"><span class="dot" style="background:var(--sky)"></span><b>sonixz/second-brain-gd</b></span>
-          <p>The memory: capture, graph, Archivist agent, MCP in and out.</p>
-          <span class="stack">Godot 4.7 · Python · SQLite</span>
-        </a>
-        <a class="repo" href="https://github.com/sonixz/agent-manager-gd">
-          <span class="path"><span class="dot" style="background:var(--mint)"></span><b>sonixz/agent-manager-gd</b></span>
-          <p>The workshop: terminals, sessions, review, voice, sandboxes.</p>
-          <span class="stack">Godot 4.7 · C++ (libghostty-vt) · Python · tmux</span>
-        </a>
-        <a class="repo" href="https://github.com/sonixz/gd-project">
-          <span class="path"><span class="dot" style="background:var(--wire)"></span><b>sonixz/gd-project</b></span>
-          <p>The lab's home: this site, the blog, and how the apps' sites come together.</p>
-          <span class="stack">HTML · CSS · GitHub Pages</span>
-        </a>
-      </div>
-      <div class="principles">
-        <span><b>Local-first.</b> Nothing leaves your computer unless you ask.</span>
-        <span><b>Your keys.</b> Encrypted on your machine, never shown again, never logged.</span>
-        <span><b>No admin.</b> Installs for your user only.</span>
-        <span><b>You decide.</b> Agents propose; destructive actions wait for your confirmation.</span>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>GD Project · an open lab of AI-native apps made with Godot · MIT</span>
+    <span>GD Project · MIT</span>
     <span>Godot is a trademark of the Godot Foundation; GD Project is an independent project.</span>
   </div>
 </footer>

@@ -29,6 +29,11 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
 
 ## Rules for the content
 
+- Tone and shape of the index (owner, 2026-11-09): humble, a portfolio of projects made with Godot. Simple, concise,
+  visually beautiful: the intro, the apps (one big card each, linking to `/second-brain/` and `/agent-manager/`), the
+  stack, open source and the latest post. The apps' sites carry the detail; do not grow the index back into a long page.
+- GitHub links stay even while the repositories are private (owner, 2026-11-09): they will work once published.
+
 - Every claim must be true of the real apps today: check the apps' DEVLOG.md / README.md before writing a feature.
   Things that only exist as proposals stay off the site.
 - Screenshots are the apps' own captures converted to WebP: Agent Manager's from `agent-manager-gd/docs/screens/`
