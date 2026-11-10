@@ -32,10 +32,11 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
 
 - Tone and shape of the index (owner, 2026-11-09): humble, a portfolio of projects made with Godot. Simple, concise,
   visually beautiful. The apps' sites carry the detail; do not grow the index into a long page.
-- The lab's vision (owner, 2026-11-10): apps that share one brain, the Second Brain at the centre. The index shows the
-  whole lab: the constellation (the Brain at the centre, solid lines for what is connected today, dotted for what is
-  planned), the apps in use (one big card each), « Connected over MCP », « Next in the lab », the stack, open source
-  and the latest post.
+- The lab's vision (owner, 2026-11-10): each app stands alone; together they share one brain. The index shows it with
+  « The lab »: app windows side by side as equals (Second Brain is one of them, not the centre) and a switch « Alone ·
+  Together ». Alone: what each app does on its own, with its own data. Together: cables to the Second Brain (solid for
+  what is connected today, dotted for what is planned) and what each app gains. Prototypes are dashed « blueprint »
+  windows with a sketch. Then « Connected over MCP », the stack, open source and the latest post.
 - GitHub links stay even while the repositories are private (owner, 2026-11-09): they will work once published.
 
 - Every claim must be true of the real apps today: check the apps' DEVLOG.md / README.md before writing a feature.
