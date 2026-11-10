@@ -6,6 +6,9 @@ suggest or build an app. Second Brain GD and Agent Manager GD are its first two 
 public showcase: its index, its blog, and the assembly of every app's site. Decided by the owner on 2026-11-08: the name
 « GD Project », MIT for every repository, a site of its own (not PYF Studio, which is a separate site and project).
 
+Read [`AI-NOTICE.md`](AI-NOTICE.md) first: this is a lab, run on one person's computer. Never expose an engine, an
+MCP server or their ports beyond the local machine unless the owner asks for it explicitly (owner, 2026-11-10).
+
 ## Context lives in the Second Brain
 
 The project's vision, decisions, problems, ideas, third parties and market are kept in the owner's Second Brain, in the

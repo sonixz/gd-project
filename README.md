@@ -15,6 +15,8 @@
   <img alt="Status: alpha" src="https://img.shields.io/badge/status-alpha-f0b264">
 </p>
 
+> **This is a lab.** Run it on your own computer; don't put it on the internet. Read the [AI notice](AI-NOTICE.md).
+
 ---
 
 Most AI tools are a chat box in a browser tab. GD Project asks what desktop software looks like when the AI is the
@@ -147,12 +149,13 @@ by hand for now; an app's repository can also ask for a new publication (`reposi
 
 Ideas for an app, a fix, a post: open an issue or a pull request. Two rules for the site:
 
-- **True today.** Every claim must be true of the real apps now: check their `README.md` and `DEVLOG.md`. Plans stay
-  off the site.
+- **True today.** Every claim must be true of the real apps now: check their `README.md` and `DEVLOG.md`. Planned
+  apps may appear, always with their status written on them (« Prototype · not built yet », « In planning »).
 - **Designed for both themes and every screen.** Light and dark tokens live in `:root` of `docs/assets/lab.css`;
   every page must work at phone width.
 
-Coding agents: read [`AGENTS.md`](AGENTS.md) first.
+AI helped? Say so, show that it works, and know what your change touches: you answer for it. See the
+[AI notice](AI-NOTICE.md). Coding agents: read [`AI-NOTICE.md`](AI-NOTICE.md) and [`AGENTS.md`](AGENTS.md) first.
 
 ## Licence
 
