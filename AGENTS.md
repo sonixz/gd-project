@@ -36,7 +36,9 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
   « The lab »: app windows side by side as equals (Second Brain is one of them, not the centre) and a switch « Alone ·
   Together ». Alone: what each app does on its own, with its own data. Together: cables to the Second Brain (solid for
   what is connected today, dotted for what is planned) and what each app gains. Prototypes are dashed « blueprint »
-  windows with a sketch. Then « Connected over MCP », the stack, open source and the latest post.
+  windows with a sketch. Then « Together, up close » (the same windows and cables in detail: a key per session,
+  reads, proposals waiting for your approval, the timeline; its three steps play in turn), the stack, open source and
+  the latest post.
 - GitHub links stay even while the repositories are private (owner, 2026-11-09): they will work once published.
 
 - Every claim must be true of the real apps today: check the apps' DEVLOG.md / README.md before writing a feature.

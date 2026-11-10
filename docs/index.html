@@ -161,38 +161,52 @@
       <p class="muted lab-proto">The dashed windows are open-source prototypes, not finished products: your choice of AI model, sample data in every demo. Their status changes here the day it changes.</p>
     </section>
 
-    <section class="link" aria-labelledby="link-title">
+    <section class="link" data-step="1" aria-labelledby="link-title">
       <div class="link-head">
-        <h2 id="link-title" class="label">Connected over MCP</h2>
+        <h2 id="link-title" class="label">Together, up close</h2>
         <p class="link-title">What one agent learns, <em>the next one knows.</em></p>
-        <p class="muted">Every Claude Code or Codex session in Agent Manager is wired to your Second Brain. The apps are worth more together than apart.</p>
+        <p class="muted">Switch to Together and this is what happens: every Claude Code or Codex session in Agent Manager is plugged into your Second Brain over MCP.</p>
       </div>
 
-      <div class="flow" role="img" aria-label="Agent Manager sessions read the Second Brain over MCP and propose to it; the archivist files what you approve.">
-        <div class="node" style="--accent: var(--mint)">
-          <span class="path"><span class="dot" style="background:var(--mint)"></span>agent-manager-gd</span>
-          <span class="pill">Claude Code · <i>fix-login</i></span>
-          <span class="pill">Codex · <i>site</i></span>
-          <span class="pill">Claude Code · <i>docs</i></span>
+      <div class="duo" id="duo" role="img" aria-label="Three Agent Manager sessions, each with its own key, plugged into the Second Brain over MCP. They read what you know; what they learn comes back as proposals that wait for your approval, then the archivist files them in the timeline.">
+        <svg class="wires" id="duo-wires" aria-hidden="true"></svg>
+
+        <div class="win" style="--accent: var(--mint)">
+          <span class="bar"><img src="agent-manager/assets/logo.svg" alt="" width="22" height="22"><b>Agent Manager GD</b><i class="state live">3 sessions</i></span>
+          <span class="rows">
+            <span class="sess"><i class="run"></i><b>Claude Code</b><span class="muted">fix-login</span><span class="k">key&nbsp;1</span></span>
+            <span class="sess"><i class="run"></i><b>Codex</b><span class="muted">site</span><span class="k">key&nbsp;2</span></span>
+            <span class="sess"><i class="run"></i><b>Claude Code</b><span class="muted">docs</span><span class="k">key&nbsp;3</span></span>
+          </span>
+          <span class="foot">One Brain key per session, revoked when the session goes.</span>
         </div>
-        <div class="wire" aria-hidden="true">
-          <span class="lane in">reads, searches ←</span>
-          <span class="cable"></span>
-          <span class="lane out">→ proposes</span>
-          <span class="key">MCP · one key per session</span>
+
+        <div class="mid" aria-hidden="true">
+          <span class="lane in">← reads, searches</span>
+          <span class="mcp">MCP</span>
+          <span class="lane out">proposes →</span>
         </div>
-        <div class="node" style="--accent: var(--sky)">
-          <span class="path"><span class="dot" style="background:var(--sky)"></span>second-brain-gd</span>
-          <span class="pill strong">Archivist · you approve</span>
-          <span class="pill">Project card · decisions · journals</span>
-          <span class="pill">Timeline · who proposed what</span>
+
+        <div class="win brain" style="--accent: var(--sky)">
+          <span class="bar"><img src="assets/second-brain/logo.svg" alt="" width="22" height="22"><b>Second Brain GD</b><i class="state live">Archivist</i></span>
+          <span class="rows">
+            <span class="grp">What you know</span>
+            <span class="row know"><span>Project card · <span class="muted">GD Project</span></span></span>
+            <span class="row know"><span>Last journal · <span class="muted">yesterday</span></span></span>
+            <span class="row know"><span>Your decisions · <span class="muted">12</span></span></span>
+            <span class="grp">Waiting for you</span>
+            <span class="row prop"><span>Journal · <span class="muted">fix-login, by Claude Code</span></span><span class="ok">Approve</span></span>
+            <span class="grp">Timeline</span>
+            <span class="row tl"><span>Filed by the Archivist · <span class="muted">undo</span></span></span>
+          </span>
+          <span class="foot">Nothing is written without you; nothing is erased.</span>
         </div>
       </div>
 
       <ol class="steps">
-        <li><b>A key per session.</b> Each agent gets its own Brain key when it starts. Remove the session and the key is revoked.</li>
-        <li><b>It starts from what you know.</b> The agent searches the Brain: the project card, the last journal, your decisions. A session can be told to orient there first and document itself as it works.</li>
-        <li><b>You keep the last word.</b> What it learns comes back as proposals. The archivist files what you approve, and the timeline can undo it.</li>
+        <li data-go="1" tabindex="0"><b>A key per session.</b> Each agent gets its own Brain key when it starts. Remove the session and the key is revoked.</li>
+        <li data-go="2" tabindex="0"><b>It starts from what you know.</b> The agent searches the Brain: the project card, the last journal, your decisions. A session can be told to orient there first and document itself as it works.</li>
+        <li data-go="3" tabindex="0"><b>You keep the last word.</b> What it learns comes back as proposals. The archivist files what you approve, and the timeline can undo it.</li>
       </ol>
 
       <div class="pair">
@@ -307,6 +321,64 @@
     io.observe(desk);
   }
   new ResizeObserver(draw).observe(desk);
+  window.addEventListener('load', draw);
+  draw();
+})();
+</script>
+<script>
+(() => {
+  // « Together, up close »: cables from each session to the Brain, and the three steps played in turn.
+  const sec = document.querySelector('section.link');
+  const duo = document.getElementById('duo');
+  const svg = document.getElementById('duo-wires');
+  const NS = 'http://www.w3.org/2000/svg';
+  const brain = duo.querySelector('.win.brain');
+  function draw() {
+    svg.replaceChildren();
+    if (getComputedStyle(svg).display === 'none') return;
+    const d = duo.getBoundingClientRect(), br = brain.getBoundingClientRect();
+    const sessions = duo.querySelectorAll('.sess');
+    const ports = [...brain.querySelectorAll('.row.know, .row.prop')];
+    sessions.forEach((s, i) => {
+      const r = s.getBoundingClientRect();
+      const x1 = r.right - d.left, y1 = r.top + r.height / 2 - d.top;
+      const t = ports[Math.min(i * 2, ports.length - 1)].getBoundingClientRect();
+      const x2 = br.left - d.left, y2 = t.top + t.height / 2 - d.top;
+      const k = (x2 - x1) * .5;
+      const p = `M${x1},${y1} C${x1 + k},${y1} ${x2 - k},${y2} ${x2},${y2}`;
+      for (const cls of ['wp live', 'wp-pk in', 'wp-pk out']) {
+        const e = document.createElementNS(NS, 'path');
+        e.setAttribute('d', p); e.setAttribute('class', cls);
+        if (cls !== 'wp live') { e.setAttribute('pathLength', '1'); e.style.animationDelay = (-i * .45) + 's'; }
+        svg.append(e);
+      }
+      for (const [x, y, c] of [[x1, y1, 'var(--mint)'], [x2, y2, 'var(--sky)']]) {
+        const e = document.createElementNS(NS, 'circle');
+        e.setAttribute('cx', x); e.setAttribute('cy', y); e.setAttribute('r', 4.5);
+        e.setAttribute('fill', c); e.setAttribute('class', 'wp-end');
+        svg.append(e);
+      }
+    });
+  }
+  const steps = [...sec.querySelectorAll('.steps li')];
+  let timer = null, n = 1;
+  function go(i) { n = i; sec.dataset.step = String(i); }
+  function stop() { clearInterval(timer); timer = null; }
+  steps.forEach(li => {
+    const pick = () => { stop(); go(+li.dataset.go); };
+    li.addEventListener('click', pick);
+    li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+  });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) go(0);
+  else if ('IntersectionObserver' in window) {
+    new IntersectionObserver(es => {
+      const seen = es.some(e => e.isIntersecting);
+      if (seen && !timer && sec.dataset.auto !== 'off') timer = setInterval(() => go(n % 3 + 1), 3600);
+      if (!seen) stop();
+    }, { threshold: .3 }).observe(duo);
+    steps.forEach(li => li.addEventListener('click', () => { sec.dataset.auto = 'off'; }));
+  }
+  new ResizeObserver(draw).observe(duo);
   window.addEventListener('load', draw);
   draw();
 })();
