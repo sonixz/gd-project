@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GD Project</title>
-<meta name="description" content="GD Project: a small lab of AI-native apps made with Godot. Second Brain GD and Agent Manager GD. Open source, MIT.">
+<meta name="description" content="GD Project: a small lab of AI-native apps that share one brain, made with Godot. Second Brain GD at the centre, Agent Manager GD, and prototypes on the way. Open source, MIT.">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <meta name="theme-color" content="#121821">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,11 +37,56 @@
   <div class="wrap">
     <section class="intro">
       <span class="path"><span class="dot" style="background:var(--wire)"></span>made with Godot · open source</span>
-      <h1>A small lab of <em>AI-native</em> apps, made with Godot.</h1>
-      <p class="lede">Desktop software with the AI at the centre and an interface drawn by a game engine. Two apps so far, both used every day.</p>
+      <h1>A small lab of <em>AI&#8209;native</em> apps that share one brain.</h1>
+      <p class="lede">At the centre, a second brain that remembers everything you give it. Around it, desktop apps drawn by a game engine, each one reading the Brain and proposing to it. Two are used every day; more are on the way.</p>
     </section>
 
-    <section class="apps" aria-label="Apps">
+    <section class="orbit" aria-labelledby="orbit-title">
+      <h2 id="orbit-title" class="label">The lab today</h2>
+      <div class="sky">
+        <svg class="rays" viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="150" y1="150" x2="150" y2="50"/>
+          <line x1="150" y1="150" x2="50" y2="150"/>
+          <line class="soon" x1="150" y1="150" x2="250" y2="50"/>
+          <line class="soon" x1="150" y1="150" x2="250" y2="250"/>
+          <line class="soon" x1="150" y1="150" x2="150" y2="250"/>
+        </svg>
+        <div class="star you" style="--accent: var(--muted)">
+          <b>You</b>
+          <span>speak, drop, send</span>
+        </div>
+        <a class="star am" href="agent-manager/" style="--accent: var(--mint)">
+          <b>Agent Manager GD</b>
+          <span>the workshop for coding agents</span>
+          <i class="state live">In use</i>
+        </a>
+        <a class="star brain" href="second-brain/" style="--accent: var(--sky)">
+          <img src="assets/second-brain/logo.svg" alt="" width="44" height="44">
+          <b>Second Brain GD</b>
+          <span>the memory every app shares</span>
+          <i class="state live">In use</i>
+        </a>
+        <div class="star pm" style="--accent: var(--plum)">
+          <b>Project Management GD</b>
+          <span>scopes, people, capacity</span>
+          <i class="state">Prototype · not built yet</i>
+        </div>
+        <div class="star crm" style="--accent: var(--rose)">
+          <b>Client GD</b>
+          <span>a CRM you talk to</span>
+          <i class="state">Prototype · not built yet</i>
+        </div>
+        <div class="star byo" style="--accent: var(--wire)">
+          <b>Build your own GD</b>
+          <span>clone, start, build yours</span>
+          <i class="state">In planning</i>
+        </div>
+      </div>
+      <p class="muted orbit-note">Solid lines: connected today over MCP. Dotted: planned.</p>
+    </section>
+
+    <h2 class="label apps-label">In use</h2>
+    <section class="apps" aria-label="Apps in use">
       <a class="app" href="second-brain/" style="--accent: var(--sky)">
         <span class="app-shot"><img class="shot" src="assets/second-brain/graph-overview.webp" alt="Second Brain GD: the knowledge graph with zones and the Archivist panel" width="1280" height="800"></span>
         <span class="app-body">
@@ -105,6 +150,31 @@
           <img class="shot" src="assets/second-brain/mcp-proposals.webp" alt="Second Brain GD: proposals from an agent waiting for approval" width="1280" height="800" loading="lazy">
           <figcaption>In the Second Brain, an agent's proposals wait for your OK.</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="next" aria-labelledby="next-title">
+      <div class="link-head">
+        <h2 id="next-title" class="label">Next in the lab</h2>
+        <p class="link-title">Business software, <em>with the Brain at the centre.</em></p>
+        <p class="muted">Open-source prototypes, not finished products: each one keeps its own working data and leaves what it learns in your Second Brain. Your choice of AI model, sample data in every demo.</p>
+      </div>
+      <div class="cards">
+        <article class="card" style="--accent: var(--plum)">
+          <i class="state">Prototype · not built yet</i>
+          <h3>Project Management GD</h3>
+          <p>Drop a scope of any shape: the AI breaks it into deliverables, tasks and risks, and files it. Describe your people once; see who does what, and who is overloaded which week. Follow-ups write themselves from what the Brain knows.</p>
+        </article>
+        <article class="card" style="--accent: var(--rose)">
+          <i class="state">Prototype · not built yet</i>
+          <h3>Client GD</h3>
+          <p>A CRM you talk to. « I spoke with Marc, he wants a quote by Friday » becomes a note, a follow-up and an up-to-date client. Ask what you know about a client, and the answer comes from everything in your Brain.</p>
+        </article>
+        <article class="card" style="--accent: var(--wire)">
+          <i class="state">In planning</i>
+          <h3>Build your own GD</h3>
+          <p>Clone, run one command: your Second Brain and Agent Manager open, already connected. Pour out your idea, and your own coding agents start building your app with the lab's recipe. Bring your own licence; nothing is sold.</p>
+        </article>
       </div>
     </section>
 

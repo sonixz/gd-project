@@ -31,12 +31,16 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
 ## Rules for the content
 
 - Tone and shape of the index (owner, 2026-11-09): humble, a portfolio of projects made with Godot. Simple, concise,
-  visually beautiful: the intro, the apps (one big card each, linking to `/second-brain/` and `/agent-manager/`), the
-  stack, open source and the latest post. The apps' sites carry the detail; do not grow the index back into a long page.
+  visually beautiful. The apps' sites carry the detail; do not grow the index into a long page.
+- The lab's vision (owner, 2026-11-10): apps that share one brain, the Second Brain at the centre. The index shows the
+  whole lab: the constellation (the Brain at the centre, solid lines for what is connected today, dotted for what is
+  planned), the apps in use (one big card each), « Connected over MCP », « Next in the lab », the stack, open source
+  and the latest post.
 - GitHub links stay even while the repositories are private (owner, 2026-11-09): they will work once published.
 
 - Every claim must be true of the real apps today: check the apps' DEVLOG.md / README.md before writing a feature.
-  Things that only exist as proposals stay off the site.
+- Planned projects may appear (owner, 2026-11-10), always with their status written on them (« Prototype · not built
+  yet », « In planning »), never described as if they existed. Their status changes on the site the day it changes.
 - Screenshots are the apps' own captures converted to WebP: Agent Manager's from `agent-manager-gd/docs/screens/`
   (converted with the Second Brain's `tools/web_images.gd`: `godot --headless --path ../second-brain-gd --script
   res://tools/web_images.gd -- in.png=out.webp@1440`), Second Brain's from `second-brain-gd/public/assets/showcase/`.
