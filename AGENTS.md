@@ -20,8 +20,9 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
   `public/` under `/second-brain/` and `/agent-manager/`, with the GD Project bar added by `tools/assemble.py`.
   Local work: `python3 tools/site.py serve` (build, link check, http://localhost:8800, rebuild on change);
   `python3 tools/site.py check` before every commit that touches the site.
-- Not online yet (owner, 2026-11-09): the repositories stay private; the site is built and checked locally, and going
-  online comes next. `.github/workflows/pages.yml` (GitHub Pages) is parked, manual runs only: Pages on a private
+- Not online yet. Owner, 2026-11-09: this repository may be made public; the apps' repositories are being cleaned
+  up first (Second Brain's checklist is in its `docs/audit-before-public.md`). The site is built and checked locally,
+  and going online comes next. `.github/workflows/pages.yml` (GitHub Pages) is parked, manual runs only: Pages on a private
   repository needs a paid plan, and the workflow would need an `APPS_READ_TOKEN` secret to read the apps.
 - On GitHub: `origin` is github.com/sonixz/gd-project (private for now). Push only on the owner's word. Sessions get
   the repository's deploy key through `GIT_SSH_COMMAND` (git commands only: check access with `git ls-remote origin`,
