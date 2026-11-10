@@ -1,6 +1,7 @@
 # AI notice
 
-**Short version: this is a lab. Run it on your own computer. Don't put it on the internet.**
+**Short version: this is a lab. Run it on your own computer. Don't put it on the internet unless you know what you're
+doing** (TCP/IP, TLS/SSL, authentication, secrets, infrastructure as code, DevOps, you know the drill).
 
 ## What this is
 

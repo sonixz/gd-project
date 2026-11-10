@@ -15,7 +15,8 @@
   <img alt="Status: alpha" src="https://img.shields.io/badge/status-alpha-f0b264">
 </p>
 
-> **This is a lab.** Run it on your own computer; don't put it on the internet. Read the [AI notice](AI-NOTICE.md).
+> **This is a lab.** Run it on your own computer; don't put it on the internet unless you know what you're doing
+> (TCP/IP, TLS, authentication, infrastructure as code, DevOps). Read the [AI notice](AI-NOTICE.md).
 
 ---
 
