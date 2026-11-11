@@ -23,11 +23,11 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
   `public/` under `/second-brain/` and `/agent-manager/`, with the GD Project bar added by `tools/assemble.py`.
   Local work: `python3 tools/site.py serve` (build, link check, http://localhost:8800, rebuild on change);
   `python3 tools/site.py check` before every commit that touches the site.
-- Not online yet. Owner, 2026-11-09: this repository may be made public; the apps' repositories are being cleaned
-  up first (Second Brain's checklist is in its `docs/audit-before-public.md`). The site is built and checked locally,
-  and going online comes next. `.github/workflows/pages.yml` (GitHub Pages) is parked, manual runs only: Pages on a private
-  repository needs a paid plan, and the workflow would need an `APPS_READ_TOKEN` secret to read the apps.
-- On GitHub: `origin` is github.com/sonixz/gd-project (private for now). Push only on the owner's word. Sessions get
+- Online since 2026-11-11: https://sonixz.github.io/gd-project/ (the lab) with the apps under `/second-brain/` and
+  `/agent-manager/`. The three repositories are public. Pages' source is « GitHub Actions »: `.github/workflows/pages.yml`
+  assembles and publishes on every push to `main` (and by hand). Never switch the source back to « Deploy from a branch »:
+  it would republish the branch alone and erase the apps' pages (it happened once, 2026-11-11).
+- On GitHub: `origin` is github.com/sonixz/gd-project (public). Push only on the owner's word. Sessions get
   the repository's deploy key through `GIT_SSH_COMMAND` (git commands only: check access with `git ls-remote origin`,
   never `ssh -T`).
 
@@ -42,7 +42,7 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
   windows with a sketch. Then « Together, up close » (the same windows and cables in detail: a key per session,
   reads, proposals waiting for your approval, the timeline; its three steps play in turn), the stack, open source and
   the latest post.
-- GitHub links stay even while the repositories are private (owner, 2026-11-09): they will work once published.
+- GitHub links stay (owner, 2026-11-09); the repositories are public now, so they work.
 
 - Every claim must be true of the real apps today: check the apps' DEVLOG.md / README.md before writing a feature.
 - Planned projects may appear (owner, 2026-11-10), always with their status written on them (« Prototype · not built
