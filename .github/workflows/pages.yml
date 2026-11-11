@@ -1,5 +1,5 @@
-# PARKED (owner, 2026-11-09): the repositories stay private, the site is built and checked locally with
-# tools/site.py for now. This workflow only runs when started by hand; it is kept for when the site goes online.
+# Live (owner, 2026-11-11): the repositories are public and Pages' source is « GitHub Actions ». Every push to main
+# publishes; it can also be started by hand. The site is still built and checked locally with tools/site.py.
 #
 # Publishes the GD Project site on GitHub Pages: the lab's pages (docs/) plus each app's site (public/ in its own
 # repository) under its own path, assembled by tools/assemble.py.
@@ -8,10 +8,11 @@
 #   1. Settings → Pages → Source: GitHub Actions.
 #   2. While the app repositories are private: a fine-grained token with read-only "Contents" on second-brain-gd and
 #      agent-manager-gd, saved as the secret APPS_READ_TOKEN. Not needed once they are public.
-#   3. Then add `push: branches: [main]` under `on:` so every push publishes.
 name: Publish the site
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
   repository_dispatch:
     types: [app-site-updated]   # an app's repository can ask for a new publication after changing its site
