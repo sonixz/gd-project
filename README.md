@@ -6,7 +6,8 @@
 
 <p align="center">
   <b>A small lab of AI-native desktop apps, made with Godot.</b><br>
-  Software with the AI at the centre and an interface drawn by a game engine.
+  Software with the AI at the centre and an interface drawn by a game engine.<br>
+  <a href="https://sonixz.github.io/gd-project/">sonixz.github.io/gd-project</a>
 </p>
 
 <p align="center">
