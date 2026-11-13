@@ -39,10 +39,10 @@ integrations are pushed as far as they go. Anyone may suggest an app or build on
       meaning, you explore it in a living graph, and your AI tools read it over MCP.
     </td>
     <td width="50%" valign="top">
-      <a href="https://github.com/sonixz/agent-manager-gd"><img src="docs/assets/agent-manager/11-grid.webp" alt="Agent Manager GD: four Claude Code sessions in a grid, grouped by project"></a>
+      <a href="https://github.com/sonixz/agent-manager-gd"><img src="docs/assets/agent-manager/showcase-hero-grid.webp" alt="Agent Manager GD: four sessions in a grid, grouped by project, one of them waiting for your OK"></a>
       <h3><a href="https://github.com/sonixz/agent-manager-gd">Agent Manager GD</a></h3>
-      Every coding agent in one control room: Claude Code, Codex and shells in real terminals, sessions that persist,
-      fork and work in their own git worktree, with the Brain in every session.
+      Your agent lab: Claude Code, Codex and your shells side by side in real terminals, isolated, observed, in your
+      control. Sessions persist, fork and work in their own git branch, with the Brain in every session.
     </td>
   </tr>
 </table>

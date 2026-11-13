@@ -27,6 +27,10 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
   `/agent-manager/`. The three repositories are public. Pages' source is « GitHub Actions »: `.github/workflows/pages.yml`
   assembles and publishes on every push to `main` (and by hand). Never switch the source back to « Deploy from a branch »:
   it would republish the branch alone and erase the apps' pages (it happened once, 2026-11-11).
+- An app's site does not go online when the app pushes: it goes online the next time this workflow runs. A push to
+  `main` here does it; so does « Run workflow » on GitHub. The workflow also listens to `repository_dispatch`
+  (`app-site-updated`), but no app sends it yet (it needs a token the owner creates). So after an app's session
+  pushes a new `public/`, the owner asks this repository's session to publish (it happened on 2026-11-13).
 - On GitHub: `origin` is github.com/sonixz/gd-project (public). Push only on the owner's word. Sessions get
   the repository's deploy key through `GIT_SSH_COMMAND` (git commands only: check access with `git ls-remote origin`,
   never `ssh -T`).
@@ -47,9 +51,10 @@ capitalisation des connaissances projet via Second Brain MCP ». Never put sourc
 - Every claim must be true of the real apps today: check the apps' DEVLOG.md / README.md before writing a feature.
 - Planned projects may appear (owner, 2026-11-10), always with their status written on them (« Prototype · not built
   yet », « In planning »), never described as if they existed. Their status changes on the site the day it changes.
-- Screenshots are the apps' own captures converted to WebP: Agent Manager's from `agent-manager-gd/docs/screens/`
-  (converted with the Second Brain's `tools/web_images.gd`: `godot --headless --path ../second-brain-gd --script
-  res://tools/web_images.gd -- in.png=out.webp@1440`), Second Brain's from `second-brain-gd/public/assets/showcase/`.
+- Screenshots are the apps' own captures, already WebP, copied as they are: Agent Manager's from
+  `agent-manager-gd/public/assets/showcase/` (1920×1200; its old `docs/screens/` folder is gone since 2026-11-09),
+  Second Brain's from `second-brain-gd/public/assets/showcase/`. When an app's look changes, copy them again: the
+  lab's pages must show the app as it is today (the home page's captures were renewed on 2026-11-13).
 - Each app owns its site (`public/` in its repository: product page, how-to guides, docs). GD Project never edits a
   copy: it assembles them. Changes to an app's site go to that app's session. An app may adopt the lab bar itself
   (`data-gd-lab-bar` on its root element), then the assembly leaves its pages alone.
